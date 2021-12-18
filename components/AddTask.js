@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const AddTask = ({ task }) => {
+const AddTask = ({ task, removeTask }) => {
   return (
     <View style={tw`w-full relative mt-10 h-full `}>
       {/* check box */}
@@ -26,7 +26,13 @@ const AddTask = ({ task }) => {
                   borderColor: "#5584AC",
                 }}
               />
-              <Icon name="trash" size={25} color="white" style={tw` mr-6`} />
+              <Icon
+                onPress={() => removeTask(task.indexOf(item))}
+                name="trash"
+                size={25}
+                color="white"
+                style={tw` mr-6`}
+              />
             </View>
           ))}
         </ScrollView>

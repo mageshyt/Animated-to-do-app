@@ -26,9 +26,17 @@ const TaskList = () => {
       setTask(null);
     }
   };
+  // task finished
+
+  const removeTask = (task) => {
+    const copy_list = [...taskItems];
+    copy_list.splice(task, 1);
+    setTaskItems(copy_list);
+    console.log({ copy_list, task });
+  };
   return (
     <View style={tw`relative  h-full`}>
-      <AddTask task={taskItems} />
+      <AddTask task={taskItems} removeTask={removeTask} />
 
       {/*  */}
       <View style={styles.getTaskContent}>
